@@ -1,7 +1,12 @@
 <template>
   <div class="stitcher-app-sidebar">
       <div class="logo-container">
-        <img alt="Vue" src="../assets/logo.png">
+        <router-link to="/">
+          <img alt="Vue" src="../assets/logo.png">
+        </router-link>
+      </div>
+      <div class="sidebar-router">
+
       </div>
   </div>
 </template>

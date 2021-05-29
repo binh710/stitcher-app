@@ -1,9 +1,10 @@
-<template class="main-body">
-  <SideBar/>
+<template>
+  <SideBar />
+  <router-view/>
 </template>
 
 <script>
-import SideBar from './components/SideBar.vue'
+import SideBar from '@/components/SideBar.vue'
 
 export default {
   name: 'App',
@@ -11,27 +12,27 @@ export default {
     SideBar
   }
 }
-</script>
 
+</script>
 <style>
-* {
-  position: relative;
-}
-body {
-  margin: 0;
-  padding: 0;
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
   color: #2c3e50;
 }
-.main-body {
-  padding-right: 50px;
+
+#nav {
+  padding: 30px;
 }
 
-/* 
-#42b983
-#2c3e50
-#36495e
- */
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
