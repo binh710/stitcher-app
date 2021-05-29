@@ -5,8 +5,15 @@
           <img alt="Vue" src="../assets/logo.png">
         </router-link>
       </div>
-      <div class="sidebar-router">
-
+      <div class="sidebar-route">
+        <router-link to="/child/app-1">
+          <img alt="app-1" src="../assets/app-icon-1.png">
+        </router-link>
+      </div>
+      <div class="sidebar-route">
+        <router-link to="/child/app-2">
+          <img alt="app-2" src="../assets/app-icon-2.png">
+        </router-link>
       </div>
   </div>
 </template>
@@ -23,22 +30,29 @@ export default {
 <style scoped>
 .stitcher-app-sidebar {
   cursor: pointer;
-  width: 50px;
+  width: 64px;
   height: 100%;
   background: #36495e;
   position: fixed;
-  padding: 8px;
+  padding: 16px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 100;
 }
 .logo-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid white;
 }
-.logo-container img {
+img {
   width: 24px;
 }
+.sidebar-route {
+  padding: 8px;
+}
+
 </style>

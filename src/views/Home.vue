@@ -21,4 +21,8 @@ export default {
 h1 {
   margin-bottom: 48px;
 }
+/* Colors
+#41b883
+#ff4083
+*/
 </style>
