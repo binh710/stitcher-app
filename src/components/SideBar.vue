@@ -12,33 +12,17 @@
           <div class="sidebar-label">{{app.appName}}</div>
         </router-link>
       </div>
-      <!-- <div class="sidebar-route">
-        <router-link class="sidebar-link" to="/child/app-2">
-          <img class="sidebar-icon" alt="app-2" src="../assets/app-icon-2.png">
-          <div class="sidebar-label">Child app 1</div>
-        </router-link>
-      </div> -->
   </div>
 </template>
 
 <script>
+import routes from '../routes.json';
+
 export default {
   name: 'SideBar',
   data: function () {
     return {
-      appList: [{
-        id: 1,
-        iconImage: 'app-icon-1.png',
-        appName: 'Child app 1',
-        appUrl: '/child/app-1',
-        appDomain: 'http://localhost:8081'
-      },{
-        id: 2,
-        iconImage: 'app-icon-2.png',
-        appName: 'Child app 2',
-        appUrl: '/child/app-2',
-        appDomain: 'http://localhost:8082'
-      }]
+      appList: routes.appList
     }
   },
   methods: {
@@ -49,7 +33,7 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 .stitcher-app-sidebar {
   cursor: pointer;
@@ -78,7 +62,6 @@ export default {
 .logo-container {
   width: 100%;
   padding-bottom: 24px;
-  /* border-bottom: 1px solid white; */
 }
 .sidebar-route {
   height: 64px;
