@@ -34,6 +34,7 @@ body {
 .body-container {
   padding-left: 64px;
   height: 100%;
+  background: bisque;
 }
 
 </style>

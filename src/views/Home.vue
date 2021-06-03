@@ -1,7 +1,11 @@
 <template>
-  <div class="welcome-msg">
-    <h1>Welcome to</h1>
-    <img alt="Vue" src="../assets/vue-geekle.png">
+  <div class="container welcome-msg">
+    <div class="row justify-content-center align-item-center text-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <h1>Welcome to</h1>
+        <img alt="Vue" src="../assets/vue-geekle.png">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -12,11 +16,8 @@ export default {
 </script>
 <style>
 .welcome-msg {
-  padding: 100px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 h1 {
   margin-bottom: 48px;
