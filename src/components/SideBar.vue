@@ -2,7 +2,7 @@
   <div class="stitcher-app-sidebar">
       <div class="logo-container">
         <router-link class="sidebar-link" to="/">
-          <img class="sidebar-icon" alt="Vue" src="../assets/logo.png">
+          <img class="sidebar-icon" alt="Vue" src="@/assets/logo.png">
           <div class="sidebar-label"></div>
         </router-link>
       </div>
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     getImgUrl(pic) {
-      return require('../assets/'+pic)
+      return require('@/assets/'+pic)
     }
   }
 }

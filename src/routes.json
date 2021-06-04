@@ -4,12 +4,12 @@
         "iconImage": "app-icon-1.png",
         "appName": "Child app 1",
         "appUrl": "/child/app-1",
-        "appDomain": "http://localhost:8001/"
+        "appDomain": "http://localhost:8001"
     },{
         "id": "app-2",
         "iconImage": "app-icon-2.png",
         "appName": "Child app 2",
         "appUrl": "/child/app-2",
-        "appDomain": "http://localhost:8002/"
+        "appDomain": "http://localhost:8002"
     }]
 }
