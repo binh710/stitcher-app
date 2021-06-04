@@ -3,7 +3,7 @@
     <div class="row justify-content-center align-item-center text-center">
       <div class="col-12 col-md-10 col-lg-8">
         <h1>Welcome to</h1>
-        <img alt="Vue" src="../assets/vue-geekle.png">
+        <img alt="Vue" src="@/assets/vue-geekle.png">
       </div>
     </div>
   </div>
