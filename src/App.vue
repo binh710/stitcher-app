@@ -38,11 +38,12 @@ export default {
           event.data.action === 'update route' &&
           event.data.route
         ) {
-          let url = event.data.route.length ? event.data.route.substring(1) : event.data.route
+          const url = event.data.route.length ? event.data.route.substring(1) : event.data.route
+          const encodeURI = url ? `/${encodeURIComponent(url)}` : url
           history.pushState(
             {},
             null,
-            this.$route.path + '/' + encodeURIComponent(url)
+            this.$route.path + encodeURI
           )
         }
       }
