@@ -1,19 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import ChildApp from '../views/ChildApp.vue'
+import PageNotFound from '../views/PageNotFound.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home
   },
   {
-    path: '/child/:pathMatch(.*)*',
-    name: 'ChildApp',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/ChildApp.vue')
+    path: '/child/:appId/:pathMatch(.*)*',
+    name: 'child',
+    component: ChildApp,
+    // children: [{
+    //   path: '',
+    //   component: ChildApp,
+    // }]
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: PageNotFound,
   }
 ]
 

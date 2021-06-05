@@ -16,12 +16,15 @@ export default {
   },
   computed: {
     appId() {
-      return this.$route?.params?.pathMatch ? this.$route.params.pathMatch[0] : ''
+      return this.$route?.params?.appId
     },
     appSrc() {
       const activeApp = this.appList.find(app => app.id === this.appId);
       const appSrc = activeApp?.appDomain ? activeApp.appDomain : ''
-      return appSrc;
+      const pathMatch = this.$route?.params?.pathMatch
+      const additionalRouteParams = pathMatch ? pathMatch.join('/') : ''
+
+      return `${appSrc}/child/${this.appId}/${additionalRouteParams}`;
     }
   }
 }
