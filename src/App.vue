@@ -39,10 +39,11 @@ export default {
           event.data.route
         ) {
           let url = event.data.route.length ? event.data.route.substring(1) : event.data.route
-          this.$router.replace({
-            name: 'child',
-            params: { pathMatch: url.split('/') },
-          })
+          history.pushState(
+            {},
+            null,
+            this.$route.path + '/' + encodeURIComponent(url)
+          )
         }
       }
     },
