@@ -16,8 +16,14 @@
       </div>
 
       <div class="button-container">
-          <button class="btn btn-primary" @click="tellChildApp()">
+          <button class="btn btn-primary" @click="alertChildApp()">
             Tell child app
+          </button>
+          <button class="btn btn-secondary" @click="logout()" v-if="isLoggedIn">
+            Log out
+          </button>
+          <button class="btn btn-secondary" @click="login()" v-else>
+            Login
           </button>
       </div>
   </div>
@@ -34,14 +40,15 @@ export default {
   name: 'SideBar',
   data: function () {
     return {
-      appList: routes.appList
+      appList: routes.appList,
+      isLoggedIn: localStorage.getItem('jwt')
     }
   },
   methods: {
     getImgUrl(pic) {
       return require('@/assets/'+pic)
     },
-    tellChildApp() {
+    alertChildApp() {
       // create the message to inform stitcher app
       const msg = {
         action: 'alert',
@@ -50,8 +57,35 @@ export default {
       
       // call global helper method to make child apps show alert
       updateChildApps(msg)
-      
-    }
+    },
+    login() {
+      // mock login method
+      // imagine that this call an API 
+      // passing username and password
+      // and assuming that the call success
+      // and the last step is
+      // to just store the jwt token to localStorage
+      this.isLoggedIn = true
+      const jwt = 'secretSauce'
+      localStorage.setItem('jwt', jwt)
+      const msg = {
+        action: 'login',
+        token: jwt
+      }
+      this.alertChildAppLoginLogout(msg)
+    },
+    logout() {
+      // mock logout method
+      this.isLoggedIn = false
+      localStorage.removeItem('jwt')
+      const msg = {
+        action: 'logout'
+      }
+      this.alertChildAppLoginLogout(msg)
+    },
+    alertChildAppLoginLogout(msg) {
+      updateChildApps(msg)
+    },
   }
 }
 </script>
@@ -59,7 +93,7 @@ export default {
 
 <style scoped>
 .stitcher-app-sidebar {
-  cursor: pointer;
+  
   width: 64px;
   height: 100%;
   background: #36495e;
@@ -128,5 +162,7 @@ export default {
 }
 .btn {
   padding: 6px;
+  margin-top: 8px;
+  width: 100%;
 }
 </style>
