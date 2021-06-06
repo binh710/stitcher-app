@@ -13,10 +13,6 @@ const routes = [
     path: '/child/:appId/:pathMatch(.*)*',
     name: 'child',
     component: ChildApp,
-    // children: [{
-    //   path: '',
-    //   component: ChildApp,
-    // }]
   },
   {
     path: "/:catchAll(.*)",

@@ -25,7 +25,7 @@ export default {
     },
   },
   methods: {
-    listenForRouteChange(event) {
+    listenForChildMessage(event) {
       // check if the message come from a list of allowed domain
       if (
           this.allowedDomainList &&
@@ -54,10 +54,10 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener('message', this.listenForRouteChange)
+    window.addEventListener('message', this.listenForChildMessage)
   },
   beforeUnmount () {
-    window.removeEventListener('message', this.listenForRouteChange)
+    window.removeEventListener('message', this.listenForChildMessage)
   }
 }
 

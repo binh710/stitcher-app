@@ -1,22 +1,34 @@
 <template>
   <div class="stitcher-app-sidebar">
-      <div class="logo-container">
-        <router-link class="sidebar-link" to="/">
-          <img class="sidebar-icon" alt="Vue" src="@/assets/logo.png">
-          <div class="sidebar-label"></div>
-        </router-link>
+      <div class="navigation-items">
+        <div class="logo-container">
+          <router-link class="sidebar-link" to="/">
+            <img class="sidebar-icon" alt="Vue" src="@/assets/logo.png">
+            <div class="sidebar-label"></div>
+          </router-link>
+        </div>
+        <div class="sidebar-route" v-for="app in appList" :key="app.id">
+          <router-link class="sidebar-link" :to="app.appUrl">
+            <img class="sidebar-icon" :alt="`app-${app.id}`" :src="getImgUrl(app.iconImage)">
+            <div class="sidebar-label">{{app.appName}}</div>
+          </router-link>
+        </div>
       </div>
-      <div class="sidebar-route" v-for="app in appList" :key="app.id">
-        <router-link class="sidebar-link" :to="app.appUrl">
-          <img class="sidebar-icon" :alt="`app-${app.id}`" :src="getImgUrl(app.iconImage)">
-          <div class="sidebar-label">{{app.appName}}</div>
-        </router-link>
+
+      <div class="button-container">
+          <button class="btn btn-primary" @click="tellChildApp()">
+            Tell child app
+          </button>
       </div>
   </div>
 </template>
 
 <script>
 import routes from '../routes.json';
+import {
+  updateChildApps
+} from '@/helpers/updateChildApps'
+
 
 export default {
   name: 'SideBar',
@@ -28,6 +40,17 @@ export default {
   methods: {
     getImgUrl(pic) {
       return require('@/assets/'+pic)
+    },
+    tellChildApp() {
+      // create the message to inform stitcher app
+      const msg = {
+        action: 'alert',
+        info: 'Listen to your parent'
+      }
+      
+      // call global helper method to make child apps show alert
+      updateChildApps(msg)
+      
     }
   }
 }
@@ -44,7 +67,7 @@ export default {
   padding: 24px 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
   z-index: 100;
   transition: width 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   overflow: hidden;
@@ -100,5 +123,10 @@ export default {
   font-weight: bold;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-
+.button-container {
+  padding: 0 8px;
+}
+.btn {
+  padding: 6px;
+}
 </style>
