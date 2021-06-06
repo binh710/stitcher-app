@@ -26,28 +26,32 @@ export default {
   },
   methods: {
     listenForRouteChange(event) {
-      // check if
+      // check if the message come from a list of allowed domain
       if (
           this.allowedDomainList &&
           this.allowedDomainList.length &&
           this.allowedDomainList.includes(event.origin)
       ) {
-        if (
-          event.data &&
-          event.data.action &&
-          event.data.action === 'update route' &&
-          event.data.route
-        ) {
-          const url = event.data.route.length ? event.data.route.substring(1) : event.data.route
-          const encodeURI = url ? `/${encodeURIComponent(url)}` : url
-          history.pushState(
-            {},
-            null,
-            this.$route.path + encodeURI
-          )
+        // check if the message format is valid
+        if ( event.data && event.data.action) {
+          // check if the message format is valid
+          if (event.data.action === 'alert' && event.data.info) {
+            window.alert(event.data.info);
+          } else if (event.data.action === 'update route' && event.data.route) {
+            this.changeRoute(event.data.route)
+          }
         }
       }
     },
+    changeRoute(routeUrl) {
+      const url = routeUrl.length ? routeUrl.substring(1) : routeUrl
+      const encodeURI = url ? `/${encodeURIComponent(url)}` : url
+      history.pushState(
+        {},
+        null,
+        this.$route.path + encodeURI
+      )
+    }
   },
   mounted() {
     window.addEventListener('message', this.listenForRouteChange)
