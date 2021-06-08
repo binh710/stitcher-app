@@ -6,6 +6,9 @@
 
 <script>
 import routes from '../routes.json';
+import {
+  updateChildApps
+} from '@/helpers/updateChildApps'
 
 export default {
   name: 'ChildApp',
@@ -18,13 +21,30 @@ export default {
     appId() {
       return this.$route?.params?.appId
     },
+    pathMatch() {
+      return this.$route?.params?.pathMatch
+    },
+    additionalRouteParams() {
+      return this.pathMatch ? this.pathMatch.join('/') : ''
+    },
     appSrc() {
       const activeApp = this.appList.find(app => app.id === this.appId);
       const appSrc = activeApp?.appDomain ? activeApp.appDomain : ''
-      const pathMatch = this.$route?.params?.pathMatch
-      const additionalRouteParams = pathMatch ? pathMatch.join('/') : ''
 
-      return `${appSrc}/child/${this.appId}/${additionalRouteParams}`;
+      return `${appSrc}/child/${this.appId}/${this.additionalRouteParams}`;
+    }
+  },
+  mounted() {
+    if (this.additionalRouteParams) {
+      // create the message to inform stitcher app
+      const msg = {
+        action: 'initial additional route',
+        additionalRouteParams: this.additionalRouteParams
+      }
+      
+      // call global helper method to make child apps show alert
+      updateChildApps(msg)
+      
     }
   }
 }
