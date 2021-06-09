@@ -68,6 +68,8 @@ export default {
       this.isLoggedIn = true
       const jwt = 'secretSauce'
       localStorage.setItem('jwt', jwt)
+      
+      // construct the message to child app
       const msg = {
         action: 'login',
         token: jwt

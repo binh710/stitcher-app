@@ -62,7 +62,7 @@ export default {
         // so that the iframe url is correctly updated
         this.$router.push(`/child/${this.$route?.params?.appId}`)
       } else {
-        // else, the below method should be call t
+        // else, the below method should be call to
         // just update the url (without refreshing the route)
         history.pushState(
           {},
